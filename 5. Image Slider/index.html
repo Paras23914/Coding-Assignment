@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+    <div class="slider">
+        <img id="sliderImage" src="" alt="Image Slider">
+    </div>
+    <div class="buttons">
+        <button onclick="prevImage()">Previous</button>
+        <button onclick="nextImage()">Next</button>
+    </div>
+
+    <script>
+        const images = [
+            "https://img.freepik.com/free-photo/cosmic-sunrise-space-background_23-2151955853.jpg",
+            "https://morethandigital.info/wp-content/uploads/2017/03/10-Top-Webseiten-f%C3%BCr-gratis-lizenzfreie-Bilder.jpeg",
+            "https://images.pexels.com/photos/733832/pexels-photo-733832.jpeg",
+            "https://st5.depositphotos.com/4440947/73813/i/450/depositphotos_738138442-stock-photo-amazing-mountain-landscape-sunrise-scenic.jpg"
+        ];
+        
+        let currentIndex = 0;
+        
+        function showImage(index) {
+            const imgElement = document.getElementById("sliderImage");
+            imgElement.src = images[index];
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+        
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        }
+        
+        // Initialize slider with the first image
+        showImage(currentIndex);
+    </script>
+</body>
+</html>
